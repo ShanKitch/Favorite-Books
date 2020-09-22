@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Architects Daughter' rel='stylesheet'>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books.css' %}">
+    <title>User Page</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <h1 class="col-sm-4">Welcome, {{request.session.user}}!</h1> 
+            <a href="/logout">Log Out</a>
+        </div>
+        <hr>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="col-lg-6">
+                <h2>Add a Favorite Book</h2>
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <form action="/add_book" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" name="description" id="description" class="form-control">
+                    </div>
+                    <button class="btn btn-primary">Add</button>
+                </form>
+            </div>
+            <div class="col-lg-6">
+                <h2>All Books</h2>
+                {% for book in booklist %}
+                 <div class='one_book'>
+                    <a href="/view_book/{{book.id}} " id="booktitle">{{book.title}}</a>
+                    <p class="added_by">Added By: {{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</p>
+                    {%if book.uploaded_by.id == request.session.user_id %}
+                        <p>This is one of your favorites</p>
+                    {%else%}
+                        <p><a href="/favorite/{{book.id}}" role="button" class="btn btn-primary">Add to Favorites</a></p>
+                    {%endif%}
+                </div>
+                {% endfor %}
+            </div>
+    </div>
+</body>
+</html>
+
+        

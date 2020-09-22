@@ -1,0 +1,43 @@
+ .container-fluid{
+        background:linear-gradient(#e6e6ff,#ccccff,#b3b3ff);
+        height:900px;
+        font-family: 'Architects Daughter';
+        
+}
+
+.col-lg-6{
+    padding:15px;
+
+}
+.row a{
+    float:right;
+    margin-right:25px;
+    margin-top:20px;
+    
+}
+
+a{
+    color:black;
+    font-weight:bold;
+    text-decoration:underline;
+    font-size:16pt;
+}
+
+.favorite{
+   color:#6666ff;
+}
+
+a.btn.btn-primary, button.btn.btn-primary{
+    background-color:#6666ff;
+    border:solid grey 2px;
+    text-decoration:none;
+
+}
+
+p.added_by, p{
+    font-size:12pt;
+}
+
+h1,h2{
+    font-weight:bold;
+}

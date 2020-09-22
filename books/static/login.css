@@ -1,0 +1,19 @@
+.container-fluid{
+    background:linear-gradient(#e6e6ff,#ccccff,#b3b3ff);
+    height:900px;
+    font-family: 'Architects Daughter';
+    
+}
+h1{
+    text-align:center;
+    font-weight:bold;
+}
+
+button.btn.btn-primary{
+    background-color:#6666ff;
+    border:solid grey 2px;
+}
+
+label,h2{
+    font-weight:bold;
+}
